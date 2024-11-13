@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container data-container">
+    <h2>Weather Data for {{ region }} - {{ parameter }} - {{ year }}</h2>
+
+    {% if monthly_data %}
+        <h3>Monthly Data</h3>
+        <ul>
+            {% for month, value in monthly_data.items %}
+                <li><strong>{{ month|title }}:</strong> {{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if seasonal_data %}
+        <h3>Seasonal Data</h3>
+        <ul>
+            {% for season, value in seasonal_data.items %}
+                <li><strong>{{ season|title }}:</strong> {{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if annual_data %}
+        <h3>Annual Data</h3>
+        <p>{{ annual_data }}</p>
+    {% endif %}
+
+  
+
+    <a href="{% url 'home' %}">   Back to Home   </a>
+    <a href="{% url 'weather-analysis' %}">    Get Data Analysis</a>
+    </form>
+    </div>
+{% endblock %}
+
